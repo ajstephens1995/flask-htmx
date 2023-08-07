@@ -1,8 +1,10 @@
 from flask import Flask, render_template, json
-import config
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
 
 
@@ -15,7 +17,7 @@ def index():
 def weather():
     baseURL = "https://api.weatherapi.com/v1/current.json?key="
     queries =  "&q=Lexington KY&aqi=no"
-    x = requests.get(baseURL + config.WEATHER_API_KEY + queries)
+    x = requests.get(baseURL + os.environ.get('WEATHER_API_KEY', "Environment variable does not exist") + queries)
     weatherDict = json.loads(x.content)
     timestamp = weatherDict["current"]["last_updated_epoch"]
     date = datetime.fromtimestamp(timestamp).strftime('%A, %B %d %Y')
