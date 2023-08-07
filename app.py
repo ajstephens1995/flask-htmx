@@ -7,7 +7,7 @@ import os
 # Setting Up
 load_dotenv()
 app = Flask(__name__)
-
+WEATHER_API_KEY_SECRET = os.getenv('WEATHER_API_KEY_SECRET')
 
 
 @app.route('/')
@@ -18,9 +18,8 @@ def index():
 def weather():
     baseURL = "https://api.weatherapi.com/v1/current.json?key="
     queries =  "&q=Lexington KY&aqi=no"
-    va = os.environ.get('WEATHER_API_KEY', "Environment variable does not exist")
-    print(va)
-    x = requests.get(baseURL + os.environ.get('WEATHER_API_KEY', "Environment variable does not exist") + queries)
+
+    x = requests.get(baseURL + WEATHER_API_KEY_SECRET + queries)
     weatherDict = json.loads(x.content)
     timestamp = weatherDict["current"]["last_updated_epoch"]
     date = datetime.fromtimestamp(timestamp).strftime('%A, %B %d %Y')
