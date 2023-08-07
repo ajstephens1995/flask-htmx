@@ -18,6 +18,8 @@ def index():
 def weather():
     baseURL = "https://api.weatherapi.com/v1/current.json?key="
     queries =  "&q=Lexington KY&aqi=no"
+    va = os.environ.get('WEATHER_API_KEY', "Environment variable does not exist")
+    print(va)
     x = requests.get(baseURL + os.environ.get('WEATHER_API_KEY', "Environment variable does not exist") + queries)
     weatherDict = json.loads(x.content)
     timestamp = weatherDict["current"]["last_updated_epoch"]
