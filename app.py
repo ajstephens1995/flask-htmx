@@ -7,6 +7,7 @@ import os
 # Setting Up
 load_dotenv()
 app = Flask(__name__)
+print(os.environ)
 WEATHER_API_KEY_SECRET = os.getenv('WEATHER_API_KEY_SECRET')
 
 
