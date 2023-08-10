@@ -23,6 +23,7 @@
 
 <body hx-boost="true">
     <header>
+        <h1>My App</h1>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul id="flashes">
@@ -33,13 +34,13 @@
             </ul>
             {% endif %}
             {% endwith %}
+            <a href="/about">About</a>
     </header>
     <main>
-        <h1>My Weather App</h1>
         {% block content %}{% endblock %}
     </main>
     <footer>
-
+        <p>AJ Stephens 2023</p>
     </footer>
 </body>
 

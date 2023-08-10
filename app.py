@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json
+from flask import Flask, render_template, json, flash
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
@@ -8,6 +8,7 @@ import os
 load_dotenv()
 app = Flask(__name__)
 WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
+app.secret_key = os.getenv("secret_key")
 
 @app.route('/')
 def index():
@@ -24,8 +25,15 @@ def weather():
     strp_timestamp = datetime.strptime(timestamp,"%Y-%m-%d %H:%M")
     date = strp_timestamp.strftime('%A, %B %d %Y')
     time = strp_timestamp.strftime('%I:%M%p')
+    
+    flash("weather flash")
 
     return render_template("weather.html", weatherDict=weatherDict, date=date, time=time)
+
+@app.route("/about", methods=["GET"])
+def about():
+    flash("About flash")
+    return render_template("about.html")
 
 if __name__ == "__main__":
     app.run()
