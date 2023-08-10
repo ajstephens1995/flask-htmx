@@ -7,9 +7,7 @@ import os
 # Setting Up
 load_dotenv()
 app = Flask(__name__)
-print(os.environ)
 WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
-
 
 @app.route('/')
 def index():
@@ -22,9 +20,10 @@ def weather():
 
     x = requests.get(baseURL + WEATHER_API_KEY + queries)
     weatherDict = json.loads(x.content)
-    timestamp = weatherDict["current"]["last_updated_epoch"]
-    date = datetime.fromtimestamp(timestamp).strftime('%A, %B %d %Y')
-    time = datetime.fromtimestamp(timestamp).strftime('%I:%M%p')
+    timestamp = weatherDict["current"]["last_updated"]
+    strp_timestamp = datetime.strptime(timestamp,"%Y-%m-%d %H:%M")
+    date = strp_timestamp.strftime('%A, %B %d %Y')
+    time = strp_timestamp.strftime('%I:%M%p')
 
     return render_template("weather.html", weatherDict=weatherDict, date=date, time=time)
 
