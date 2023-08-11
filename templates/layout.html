@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My app.">
     <meta name="author" content="AJ">
-    <link rel="stylesheet" href="./static/styles/pico.classless.min.css">
+    <link rel="stylesheet" href="./static/styles/pico.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./static/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./static/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./static/favicons/favicon-16x16.png">
@@ -22,8 +22,16 @@
 </head>
 
 <body hx-boost="true">
-    <header>
+    <header class="container">
         <h1>My App</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/todo">Todo List</a></li>
+                <li><a href="/weather">Weather</a></li>
+            </ul>
+        </nav>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul id="flashes">
@@ -34,12 +42,11 @@
             </ul>
             {% endif %}
             {% endwith %}
-            <a href="/about">About</a>
     </header>
-    <main>
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
-    <footer>
+    <footer class="container">
         <p>AJ Stephens 2023</p>
     </footer>
 </body>

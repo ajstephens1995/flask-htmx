@@ -1,0 +1,14 @@
+{% if weatherResults %}
+{% for loc in weatherResults %}
+<tr>
+    <td>{{ loc.name }}</td>
+    <td>{{ loc.region }}</td>
+    <td>{{ loc.country }}</td>
+    <td> 
+        <span class="htmx-indicator">loading...</span>
+        <a href="" hx-get="/weather/card?q={{ loc.name }} {{ loc.region }} {{ loc. country }}" hx-target="#weather-card"
+            hx-indicator="previous span">Select</a>
+    </td>
+</tr>
+{% endfor %}
+{% endif %}

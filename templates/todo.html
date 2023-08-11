@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Todo</h1>
+{% if todo_list %}
+<div class="container" id="todo_list">
+    {% for todo in todo_list %}
+    {% if loop.first %}
+    <div class="grid">
+        <article>
+
+            <body>
+                <h6>Task: {{ todo.task }}</h6>
+                <p>Notes: {{ todo.notes }}</p>
+                <div class="grid">
+                    <div>
+                        <p>Status: {{ todo.status }}</p>
+                    </div>
+                    <div>
+                        <p>Due Date: {{ todo.due_date }}</p>
+                    </div>
+                </div>
+                <small><a href="#">Edit</a></small>
+                <small><a href="#">Delete</a></small>
+            </body>
+        </article>
+        {% elif loop.index0 % 3 == 0 %}
+    </div>
+    <div class="grid">
+        <article>{{ todo.status }} | {{ todo.due_date }} | {{ todo.task }}</article>
+        {% else %}
+        <article>{{ todo.status }} | {{ todo.due_date }} | {{ todo.task }}</article>
+        {% endif %}
+        {% if loop.last %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+</div>
+{% endblock %}

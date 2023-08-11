@@ -1,7 +1,40 @@
-<article>
-    <h2>{{ weatherDict.location.name }}, {{ weatherDict.location.region }}</h2>
-    <p>As of {{ date }} at {{ time }}</p>
-    <p>{{ weatherDict.current.temp_f }}° F</p>
-    <p>{{ weatherDict.current.humidity }}%</p>
-    <p>Conditions are {{ weatherDict.current.condition.text }}</p>
-</article>
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="grid">
+    <div>
+        <h3>
+            Get Current Weather in City:
+            <span class="htmx-indicator">Searching...</span>
+        </h3>
+    </div>
+    <div>
+        <a href="" hx-get="/weather/card?q=Lexington Kentucky" hx-target="#weather-card">Get weather in
+            Lexington,
+            KY</a>
+    </div>
+</div>
+<input class="form-control" type="search" name="search" placeholder="Begin Typing To Search Cities..."
+    hx-post="/weather/search" hx-trigger="keyup changed delay:500ms, search" hx-target="#search-results"
+    hx-indicator="previous span.htmx-indicator">
+<div class="grid">
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Region</th>
+                    <th>Country</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="search-results">
+            </tbody>
+        </table>
+    </div>
+    <div class="container-fluid">
+        <div id="weather-card"></div>
+    </div>
+</div>
+
+{% endblock %}
