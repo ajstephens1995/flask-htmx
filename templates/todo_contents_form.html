@@ -1,0 +1,28 @@
+<article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
+<body>
+    <form hx-put="/todo/{{ todo.id }}"></form>
+    <div><label>Task</label>
+        <textarea style="resize: vertical;"name="Task" rows="2">{{ todo.task }}</textarea>
+
+    </div>
+    <br>
+    <div>
+        <label>Notes</label>
+        <textarea style="resize: vertical;"name="Notes">{{ todo.notes }}</textarea>
+    </div>
+    <br>
+    <div class="grid">
+        <div><label>Complete?</label>
+            <input type="checkbox" role="switch" name="Status" value="{{ todo.status }}">
+        </div>
+        <div><label>Due Date</label>
+            <input type="date" name="Due Date" value="{{ todo.due_date }}">
+        </div>
+    </div>
+    <br>
+    <button class="btn">Submit</button>
+    <br>
+    <small><a href="/todo/{{ todo.id }}">Cancel</a></small>
+    </form>
+</body>
+</article>

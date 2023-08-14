@@ -7,29 +7,68 @@
     {% for todo in todo_list %}
     {% if loop.first %}
     <div class="grid">
-        <article>
+        <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
 
             <body>
-                <h6>Task: {{ todo.task }}</h6>
-                <p>Notes: {{ todo.notes }}</p>
-                <div class="grid">
-                    <div>
-                        <p>Status: {{ todo.status }}</p>
-                    </div>
-                    <div>
-                        <p>Due Date: {{ todo.due_date }}</p>
-                    </div>
+                <div><label>Task</label><small>{{ todo.task }}</small></div>
+                <br>
+                <div>
+                    <label>Notes</label><small>{{ todo.notes }}</small>
                 </div>
-                <small><a href="#">Edit</a></small>
-                <small><a href="#">Delete</a></small>
+                <br>
+                <div class="grid">
+                    <div><label>Complete</label><small>{{ todo.status }}</small></div>
+                    <div><label>Due Date</label><small>{{ todo.due_date }}</small></div>
+                </div>
+                <br>
+                <small><a href="/todo/edit/{{ todo.id }}">Edit</a></small>
+                <br>
+                <small><a href="/todo/delete/{{ todo.id }}">Delete</a></small>
             </body>
         </article>
         {% elif loop.index0 % 3 == 0 %}
     </div>
     <div class="grid">
-        <article>{{ todo.status }} | {{ todo.due_date }} | {{ todo.task }}</article>
+        <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
+
+            <body>
+                <div><label>Task</label><small>{{ todo.task }}</small></div>
+                <br>
+                <div>
+                    <label>Notes</label><small>{{ todo.notes }}</small>
+                </div>
+                <br>
+                <div class="grid">
+                    <div><label>Status</label><small>{{ todo.status }}</small></div>
+                    <div><label>Due Date</label><small>{{ todo.due_date }}</small></div>
+                </div>
+                <br>
+                <small><a href="/todo/edit/{{ todo.id }}">Edit</a></small>
+                <br>
+                <small><a href="/todo/delete/{{ todo.id }}">Delete</a></small>
+
+            </body>
+        </article>
         {% else %}
-        <article>{{ todo.status }} | {{ todo.due_date }} | {{ todo.task }}</article>
+        <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
+
+            <body>
+                <div><label>Task</label><small>{{ todo.task }}</small></div>
+                <br>
+                <div>
+                    <label>Notes</label><small>{{ todo.notes }}</small>
+                </div>
+                <br>
+                <div class="grid">
+                    <div><label>Status</label><small>{{ todo.status }}</small></div>
+                    <div><label>Due Date</label><small>{{ todo.due_date }}</small></div>
+                </div>
+                <br>
+                <small><a href="/todo/edit/{{ todo.id }}">Edit</a></small>
+                <br>
+                <small><a href="/todo/delete/{{ todo.id }}">Delete</a></small>
+            </body>
+        </article>
         {% endif %}
         {% if loop.last %}
     </div>

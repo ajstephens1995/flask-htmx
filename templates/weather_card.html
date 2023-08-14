@@ -1,8 +1,5 @@
 <div class="container">
-    <h2>{{ weatherDict.location.name }}, {{ weatherDict.location.region }}</h2>
-    <p>As of {{ date }} at {{ time }}</p>
-    <p>🌡️ {{ weatherDict.current.temp_f }}° F</p>
-    <p>💧 {{ weatherDict.current.humidity }}%</p>
-    <p>Conditions are {{ weatherDict.current.condition.text }}</p>
-    <img src="{{ weatherDict.current.condition.icon }}">
+    <p><img src="{{ weatherDict.current.condition.icon }}"><strong>{{ weatherDict.location.name }}, {{ weatherDict.location.region }}</strong> as of {{ date }} at {{ time }}</p>
+    <p>🌡️ {{ weatherDict.current.temp_f }}° F | 💧 {{ weatherDict.current.humidity }}% | {{ weatherDict.current.condition.text }}</p>
+    
 </div>
