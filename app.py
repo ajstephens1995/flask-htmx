@@ -35,7 +35,18 @@ class TodoList(list):
         for todo in self:
             if str(todo.id) == str(todo_id):
                 return todo
-            else: return None
+        else: return None
+    
+    def update_by_id(self, todo_id, status="Incomplete", due_date="None", task="", notes=""):
+        target = self.get_by_id(todo_id)
+        if target:
+            target.status = status
+            target.due_date = due_date
+            target.task = task
+            target.notes = notes
+            return "success"
+        else: return "failed"
+        
         
         
         
@@ -66,7 +77,8 @@ def todo():
 @app.route("/todo/<todo_id>", methods=["PUT"])
 def todoUpdate(todo_id=0):
     focusTodo = my_todo_list.get_by_id(todo_id)
-    return render_template("todo_contents.html", todo=focusTodo)
+    result = my_todo_list.update_by_id(todo_id, request.form.get("Status") if request.form.get("Status") else "Incomplete", request.form.get("Due Date") if request.form.get("Due Date") else None, request.form.get("Task"), request.form.get("Notes"))
+    return render_template("todo_contents.html", todo=focusTodo, result=result)
 
 @app.route("/todo/<todo_id>", methods=["GET"])
 def todoGet(todo_id=0):
