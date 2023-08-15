@@ -1,0 +1,13 @@
+.htmx-swapping {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+    transition: opacity .25s ease-out;
+    transition: margin .7s ease-out .25s, padding .7s ease-out .25s, font-size .7s ease-out .25s;
+  }
+
+  .htmx-swapping label {
+    margin: 0;
+    transition: margin .7s ease-out .25s;
+  }

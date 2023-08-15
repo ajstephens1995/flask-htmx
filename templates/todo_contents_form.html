@@ -1,19 +1,23 @@
 <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
-<body>
+
     <form hx-put="/todo/{{ todo.id }}">
     <div><label><b>Task</b></label>
-        <textarea style="resize: vertical;"name="Task">{{ todo.task }}</textarea>
+        <textarea style="resize: vertical;" name="Task" rows="1">{{ todo.task }}</textarea>
 
     </div>
     <br>
     <div>
         <label><b>Notes</b></label>
-        <textarea style="resize: vertical;"name="Notes">{{ todo.notes }}</textarea>
+        <textarea style="resize: vertical;"name="Notes" rows="4">{{ todo.notes }}</textarea>
     </div>
     <br>
     <div class="grid">
         <div><label><b>Complete?</b></label>
+            {% if todo.status == "Complete" %}
+            <input checked="true" type="checkbox" role="switch" name="Status" value="Complete">
+            {% else %}
             <input type="checkbox" role="switch" name="Status" value="Complete">
+            {% endif %}
         </div>
         <div><label><b>Due Date</b></label>
             <input type="date" name="Due Date" value="{{ todo.due_date }}">
@@ -24,5 +28,5 @@
     <br>
     <a href="" hx-get="/todo/{{ todo.id }}">Cancel</a>
     </form>
-</body>
+
 </article>

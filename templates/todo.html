@@ -9,65 +9,65 @@
     <div class="grid">
         <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
 
-            <body>
-                <div><label><b>Task</b></label>{{ todo.task }}</div>
-                <br>
-                <div>
-                    <label><b>Notes</b></label>{{ todo.notes }}
-                </div>
-                <br>
-                <div class="grid">
-                    <div><label><b>Status</b></label>{{ todo.status }}</div>
-                    <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
-                </div>
-                <br>
-                <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
-                <br>
-                <a href="" hx-get="/todo/delete/{{ todo.id }}">Delete</a>
-            </body>
+
+            <div><label><b>Task</b></label>{{ todo.task }}</div>
+            <br>
+            <div>
+                <label><b>Notes</b></label>{{ todo.notes }}
+            </div>
+            <br>
+            <div class="grid">
+                <div><label><b>Status</b></label>{{ todo.status }}</div>
+                <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
+            </div>
+            <br>
+            <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
+            <br>
+            <a href="" hx-delete="/todo/delete/{{ todo.id }}" hx-swap="outerHTML swap:1s">Delete</a>
+
         </article>
         {% elif loop.index0 % 2 == 0 %}
     </div>
     <div class="grid">
         <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
 
-            <body>
-                <div><label><b>Task</b></label>{{ todo.task }}</div>
-                <br>
-                <div>
-                    <label><b>Notes</b></label>{{ todo.notes }}
-                </div>
-                <br>
-                <div class="grid">
-                    <div><label><b>Status</b></label>{{ todo.status }}</div>
-                    <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
-                </div>
-                <br>
-                <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
-                <br>
-                <a href="" hx-get="/todo/delete/{{ todo.id }}">Delete</a>
 
-            </body>
+            <div><label><b>Task</b></label>{{ todo.task }}</div>
+            <br>
+            <div>
+                <label><b>Notes</b></label>{{ todo.notes }}
+            </div>
+            <br>
+            <div class="grid">
+                <div><label><b>Status</b></label>{{ todo.status }}</div>
+                <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
+            </div>
+            <br>
+            <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
+            <br>
+            <a href="" hx-delete="/todo/delete/{{ todo.id }}" hx-swap="outerHTML swap:1s">Delete</a>
+
+
         </article>
         {% else %}
         <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
 
-            <body>
-                <div><label><b>Task</b></label>{{ todo.task }}</div>
-                <br>
-                <div>
-                    <label><b>Notes</b></label>{{ todo.notes }}
-                </div>
-                <br>
-                <div class="grid">
-                    <div><label><b>Status</b></label>{{ todo.status }}</div>
-                    <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
-                </div>
-                <br>
-                <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
-                <br>
-                <a href="" hx-get="/todo/delete/{{ todo.id }}">Delete</a>
-            </body>
+
+            <div><label><b>Task</b></label>{{ todo.task }}</div>
+            <br>
+            <div>
+                <label><b>Notes</b></label>{{ todo.notes }}
+            </div>
+            <br>
+            <div class="grid">
+                <div><label><b>Status</b></label>{{ todo.status }}</div>
+                <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
+            </div>
+            <br>
+            <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
+            <br>
+            <a href="" hx-delete="/todo/delete/{{ todo.id }}" hx-swap="outerHTML swap:1s">Delete</a>
+
         </article>
         {% endif %}
         {% if loop.last %}

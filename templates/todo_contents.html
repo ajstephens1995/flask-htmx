@@ -1,21 +1,22 @@
 <article id="{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
+
+    <div><label><b>Task</b></label>{{ todo.task }}</div>
+    <br>
+    <div>
+        <label><b>Notes</b></label>{{ todo.notes }}
+    </div>
+    <br>
+    <div class="grid">
+        <div><label><b>Status</b></label>{{ todo.status }}</div>
+        <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
+    </div>
+    <br>
+    <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
+    <br>
+    <a href="" hx-delete="/todo/delete/{{ todo.id }}" hx-swap="outerHTML swap:1s">Delete</a>
+
     {% if result %}
-    <small>edit: {{ result }}</small>
+    <br>
+    <small>edit - {{ result }}</small>
     {% endif %}
-    <body>
-        <div><label><b>Task</b></label>{{ todo.task }}</div>
-        <br>
-        <div>
-            <label><b>Notes</b></label>{{ todo.notes }}
-        </div>
-        <br>
-        <div class="grid">
-            <div><label><b>Status</b></label>{{ todo.status }}</div>
-            <div><label><b>Due Date</b></label>{{ todo.due_date }}</div>
-        </div>
-        <br>
-        <a href="" hx-get="/todo/edit/{{ todo.id }}">Edit</a>
-        <br>
-        <a href="" hx-get="/todo/delete/{{ todo.id }}">Delete</a>
-    </body>
 </article>
